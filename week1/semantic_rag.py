@@ -8,6 +8,7 @@ from langchain_chroma import Chroma
 from langchain_core.tools.retriever import create_retriever_tool
 from langchain.agents import create_agent
 from pathlib import Path
+from langchain.agents.middleware import ToolCallLimitMiddleware, ModelCallLimitMiddleware
 import os
 
 load_dotenv()
@@ -34,7 +35,8 @@ def load_all_docs(repo_path):
 
 
 def chunk_docs(docs: list[Document]) -> list:
-    print(f"Chunking {len(docs)} documents with chunk size {CHUNK_SIZE} and overlap {CHUNK_OVERLAP}")
+    print(
+        f"Chunking {len(docs)} documents with chunk size {CHUNK_SIZE} and overlap {CHUNK_OVERLAP}")
 
     text_splitter = RecursiveCharacterTextSplitter.from_language(
         language="python",
@@ -59,15 +61,25 @@ def build_agent(vector_store: Chroma) -> create_agent:
         name="search_codebase",
         description="Search the codebase for relevant functions, classes, or logic.")
 
-    llm_instance = ChatGroq(model="llama-3.3-70b-versatile", temperature=0, max_retries = 2)
+    llm_instance = ChatGroq(
+        model="llama-3.3-70b-versatile", temperature=0, max_retries=2)
 
     system_message = SystemMessage(
         content="You are a senior engineer. Always use search_codebase before answering. Reference specific file and function names. If not found say 'I could not find that in the codebase'. Never write XML-style function calls manually.`")
 
+    # limiting tool or model calls
+    middleware = [
+        ModelCallLimitMiddleware(run_limit=5, exit_behavior='end'),
+
+        ToolCallLimitMiddleware(
+            tool_name='search_codebase', run_limit=2, exit_behavior='continue')
+    ]
+
     return create_agent(
         llm_instance,
         tools=[search_codebase],
-        system_prompt=system_message)
+        system_prompt=system_message,
+        middleware=middleware)
 
 
 if __name__ == "__main__":
@@ -94,6 +106,6 @@ if __name__ == "__main__":
             version="v2",
         ):
             last_message = chunk['data']['messages'][-1].content
-        
+
         print("\nAgent response:")
         print(last_message)
