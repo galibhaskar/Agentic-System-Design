@@ -7,7 +7,7 @@
 2. Semantic RAG:
    - Uses vector databases to store and retrieve relevant information based on cosine similarity.
 
-   Semantic RAG Implementation: [week1/semantic_rag.py](week1/semantic_rag.py)
+   Semantic RAG Implementation: [week1/semantic_rag.py](../week1/semantic_rag.py)
 ---
 3. RecursiveCharacterTextSplitter (Python)
 

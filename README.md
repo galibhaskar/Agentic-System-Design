@@ -8,7 +8,7 @@
 
    ## Class-1:
    - Introduction to RAG
-   - Implementation of Semantic RAG
+   - Implementation of Semantic RAG([Semantic RAG Implementation](week1/semantic_rag.py))
    - Experimentation on topK and chunk parameters.
    - Tracing in LangSmith
    - Limit model, tool calls of the agent.
@@ -17,3 +17,9 @@
 
 
    ## Class-2:
+   - Introduction to AST (Abstract Syntax Tree)
+   - Semantic RAG using AST ([AST RAG Implementation](week1/semantic_rag_ast.py))
+   - Introduction to BM25
+   - Lexical RAG using BM25
+
+   Refer to [Day-2 Learnings](docs/Day_2_README.md) for more details.

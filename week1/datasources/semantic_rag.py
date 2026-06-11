@@ -48,6 +48,7 @@ def build_vector_store(chunks: list) -> Chroma:
 
 
 def build_agent(vector_store: Chroma) -> create_agent:
+    """Builds a retrieval-augmented generation (RAG) agent that can search a codebase and answer questions about it."""
     search_tool = create_retriever_tool(
         vector_store.as_retriever(),
         name="code_search",

@@ -9,3 +9,4 @@ langchain-groq
 sentence-transformers
 langchain-embeddings
 langchain-text-splitters
+rank-bm25
