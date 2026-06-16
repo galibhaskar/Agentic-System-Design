@@ -4,7 +4,7 @@
 - Refer to [Environment Setup](docs/Environment_Setup_README.md) for detailed instructions on setting up the environment for this project.
 ---
 
-# Week 1:
+# Week 1: BASICS of RAG and its Implementation
 
    ## Class-1:
    - Introduction to RAG
@@ -23,3 +23,9 @@
    - Lexical RAG using BM25
 
    Refer to [Day-2 Learnings](docs/Day_2_README.md) for more details.
+
+   ## Class-3:
+   - Types of RAG
+   - RAG Evaluation Metrics
+
+   Refer to [Day-3 Learnings](docs/Day_3_README.md) for more details.
