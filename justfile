@@ -22,5 +22,8 @@ tree_sitter:
 semantic_rag_tree_sitter:
     PYTHONPATH=. uv run python week1/semantic_rag_tree_sitter.py
 
+hybrid_rag:
+    PYTHONPATH=. uv run python week1/hybrid_rag.py --repo-path sample_project
+
 sync:
     uv sync
