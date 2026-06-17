@@ -10,3 +10,8 @@ sentence-transformers
 langchain-embeddings
 langchain-text-splitters
 rank-bm25
+openevals
+langsmith
+openai
+ragas
+langchain_google_genai

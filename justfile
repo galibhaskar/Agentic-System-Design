@@ -25,5 +25,11 @@ semantic_rag_tree_sitter:
 hybrid_rag:
     PYTHONPATH=. uv run python week1/hybrid_rag.py --repo-path datasources/sample_project
 
+test_scenarios:
+    PYTHONPATH=. uv run python week2/test_scenarios.py
+
+run_plan plan_id:
+    PYTHONPATH=. uv run python week2/test_scenarios.py {{plan_id}}
+
 sync:
     uv sync
