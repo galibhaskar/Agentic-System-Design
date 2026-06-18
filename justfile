@@ -28,6 +28,9 @@ hybrid_rag:
 agentic_rag:
     PYTHONPATH=. uv run python week2/agentic_rag_demo.py
 
+hyde_rag:
+    PYTHONPATH=. uv run python week2/hyde_rag_demo.py
+
 test_scenarios:
     PYTHONPATH=. uv run python week2/test_suit.py
 
