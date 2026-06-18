@@ -40,7 +40,10 @@
    Refer to [Day-4 Learnings](docs/Day_4_README.md) for more details.
 
    ## Class-5:
-   - Agentic RAG
+   - Agentic RAG (Agentic RAG Implementation: [Agentic RAG](week2/agentic_rag_demo.py))
+   - HyDE RAG Agent Implementation ([HyDE RAG Agent](week2/hyde_rag_demo.py))
+   - RAPTOR: Recursive Abstractive Processing for Tree-Organized Retrieval
+   - Vectorless RAG
    - Context Engineering for RAG
 
    Refer to [Day-5 Learnings](docs/Day_5_README.md) for more details.

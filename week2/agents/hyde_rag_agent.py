@@ -19,7 +19,7 @@ HYDE_SYSTEM_PROMPT = (
 
 class HyDERAGAgent(BaseAgent):
     """
-    Hypothetical Document Embedding(HyDE) paraphrases the user query for better retrieval, then uses a router agent to pick the best retriever (semantic / lexical / graph) per query, before synthesising the final answer.
+    Hypothetical Document Embedding(HyDE) paraphrases the user query for better retrieval, then uses a agent to pick the best retriever (semantic / lexical / graph) per query, before synthesising the final answer.
 
     core idea:
     - Don't embed the raw user query.
