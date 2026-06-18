@@ -29,3 +29,18 @@
    - RAG Evaluation Metrics
 
    Refer to [Day-3 Learnings](docs/Day_3_README.md) for more details.
+
+# Week 2: RAG Evaluation Frameworks, Context Engineering
+
+   ## Class-4:
+   - RAG Evaluation Frameworks:
+    - RAGAS (Retrieval Augmented Generation Assessment)
+   - Test Suites for evaluation of RAG
+
+   Refer to [Day-4 Learnings](docs/Day_4_README.md) for more details.
+
+   ## Class-5:
+   - Agentic RAG
+   - Context Engineering for RAG
+
+   Refer to [Day-5 Learnings](docs/Day_5_README.md) for more details.

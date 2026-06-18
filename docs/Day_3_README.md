@@ -34,7 +34,7 @@ Notes:
     - Fusion Ranking: Combines the rankings from multiple retrievers by assigning scores based on their ranks and fusing them together. Handles duplicates as well.
         - RRF (Reciprocal Rank Fusion):
         - - score(doc) = sum(1 / (k + rank_i(doc))) for i in retrievers 
-            - where k is a constant (often set to 60) to dampen the influence of lower-ranked documents, and 
+            - where k is a smoothingconstant (often set to 60) to dampen the influence of lower-ranked documents, and 
             - rank_i(doc) is the rank of the document in the i-th retriever's results.
         
         - Weighted Scored Fusion:
