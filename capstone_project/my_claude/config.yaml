@@ -1,0 +1,16 @@
+embedder:
+  provider: OPENAI
+  model: text-embedding-3-small
+
+chroma_db:
+  persist_directory: .chromadb/
+  collection_name: codebase
+
+elasticsearch:
+  url: http://localhost:9200
+  index_name: codebase
+
+llm:
+  provider: OPENAI
+  model: gpt-4o
+  temperature: 0.2
