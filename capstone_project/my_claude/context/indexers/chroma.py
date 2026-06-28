@@ -59,7 +59,7 @@ def index_codebase(repo_path: str) -> chromadb.Collection:
     return collection
 
 
-def show_semantic_index(collection: chromadb.Collection) -> None:
+def show_index(collection: chromadb.Collection) -> None:
     """Display all documents stored in the ChromaDB collection."""
     results = collection.get(include=["documents", "metadatas", "embeddings"])
     console.print(f"\n[bold]Semantic Index — {collection.count()} chunks[/bold]\n")

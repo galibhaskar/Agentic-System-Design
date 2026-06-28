@@ -2,6 +2,14 @@ embedder:
   provider: OPENAI
   model: text-embedding-3-small
 
+rag:
+  provider: qdrant # qdrant | chroma_db
+
+qdrant:
+  retrieval_mode: hybrid # dense | sparse | hybrid
+  collection_name: codebase
+  batch_size: 50
+
 chroma_db:
   persist_directory: .chromadb/
   collection_name: codebase

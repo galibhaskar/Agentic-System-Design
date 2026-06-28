@@ -6,7 +6,7 @@ from rich.prompt import Prompt
 from my_claude.observability.logger import get_logger
 from my_claude.config import config
 from my_claude.llm.factory import get_llm, get_embedder
-from my_claude.context.indexers import index_codebase, show_semantic_index
+from my_claude.context.indexers.factory import get_indexer, show_semantic_index
 from my_claude.agent.orchestrator import handle_query
 
 load_dotenv()
@@ -22,28 +22,18 @@ def initialize():
     console.print(f"[dim]LLM: {config['llm']['provider']} / {config['llm']['model']}[/dim]")
     console.print(f"[dim]Embedder: {config['embedder']['provider']} / {config['embedder']['model']}[/dim]")
 
-    collection = _get_or_index_collection()
-    console.print(f"[green]✓ Ready — {collection.count()} chunks indexed[/green]\n")
-    return llm, embedder, collection
+    index = _get_or_create_index()
+    console.print(f"[green]✓ Ready [/green]\n")
+    return llm, embedder, index
 
-def _get_or_index_collection() -> chromadb.Collection:
+def _get_or_create_index():
     """
-    Retrieve the existing collection from ChromaDB or index the codebase if it doesn't exist.
+    Get or create the semantic index or qdrant index based on the configuration.
     """
-    client = chromadb.PersistentClient(path=config["chroma_db"]["persist_directory"])
-    collection = client.get_or_create_collection(name=config["chroma_db"]["collection_name"])
-
-    if(collection.count() > 0):
-        logger.info(f"Collection '{config['chroma_db']['collection_name']}' already exists with {collection.count()} documents.")
-        console.print(f"[dim]Collection '{config['chroma_db']['collection_name']}' already exists with {collection.count()} documents.[/dim]")
-        return collection
-
-    repo_path = str(Path().cwd())
-
-    logger.info(f"Indexing repo: {repo_path}")
-    console.print(f"[dim]Indexing {repo_path}...[/dim]")
-    return index_codebase(repo_path)
-
+    repo_path = str(Path.cwd())
+    logger.info(f"Checking index for repo: {repo_path}")
+    console.print(f"[dim]Checking index for repo: {repo_path}[/dim]")
+    return get_indexer()(repo_path)
 
 def run():
     """
@@ -53,7 +43,7 @@ def run():
     console.print("\n[bold green]Welcome to the My Claude Application - Code Assistant RAG![/bold green]\n")
     console.print("Type [bold red]'/exit'[/bold red] to quit the application.\n")
 
-    llm, embedder, collection = initialize()
+    llm, embedder, index = initialize()
 
     while True:
         user_input = Prompt.ask("[bold blue]>[/bold blue]")
@@ -69,7 +59,7 @@ def run():
             console.print(f"\n\n[bold green]Assistant:[/bold green] {response}\n\n")
         elif user_input == "/show_semantic_index":
             logger.info("Showing semantic index")
-            show_semantic_index(collection)
+            show_semantic_index()(index)
 
         else:
             # invalid command handling
