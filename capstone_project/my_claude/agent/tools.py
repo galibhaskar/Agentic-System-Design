@@ -1,5 +1,5 @@
 from langchain.tools import tool
-from my_claude.context.retrievers.semantic_chroma import retrieve
+from my_claude.context.retrievers.retriever_factory import get_retriever
 from my_claude.observability.logger import get_logger
 
 logger = get_logger(__name__)
@@ -16,7 +16,8 @@ def search_codebase(query: str) -> list[dict]:
         list[dict]: A list of dictionaries containing the retrieved documents and their metadata.
     """
     logger.info(f"Searching codebase for query: '{query}'")
-    chunks = retrieve(query, k=5)
+    retriever = get_retriever()
+    chunks = retriever(query, k=5)
 
     results = []
     for chunk in chunks:

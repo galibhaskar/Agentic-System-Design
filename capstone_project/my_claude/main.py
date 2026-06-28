@@ -6,7 +6,7 @@ from rich.prompt import Prompt
 from my_claude.observability.logger import get_logger
 from my_claude.config import config
 from my_claude.llm.factory import get_llm, get_embedder
-from my_claude.context.indexers.factory import get_indexer, show_semantic_index
+from my_claude.context.indexers.indexer_factory import get_indexer, show_semantic_index
 from my_claude.agent.orchestrator import handle_query
 
 load_dotenv()

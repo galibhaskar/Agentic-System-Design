@@ -11,9 +11,13 @@ def get_indexer():
         fetches the indexer based on the config file
     """
     provider = config["rag"]["provider"]
+    from rich.console import Console
+    console = Console()
     if provider == "chroma_db":
+        console.print(f"[dim]Using ChromaDB indexer...[/dim]")
         return index_codebase_chroma
     elif provider == "qdrant":
+        console.print(f"[dim]Using Qdrant indexer...[/dim]")
         return index_codebase_qdrant
     else:
         logger.error(f"Invalid indexer type: {provider}")

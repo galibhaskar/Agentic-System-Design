@@ -33,6 +33,11 @@ def index_codebase(repo_path: str) -> QdrantVectorStore:
     collection_name = config["qdrant"]["collection_name"]
     retrieval_mode = _get_retrieval_mode()
 
+    from rich.console import Console
+    console = Console()
+    console.print(f"[dim]Using retrieval mode: {retrieval_mode.name}[/dim]")
+    logger.info(f"Using retrieval mode: {retrieval_mode.name}")
+
     qdrant_client = QdrantClient(url=url, api_key=api_key)
 
     exisiting = [
