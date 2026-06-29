@@ -22,3 +22,13 @@ llm:
   provider: OPENAI
   model: gpt-4o
   temperature: 0.2
+
+agent:
+  max_tool_calls: 3
+  max_model_calls: 5
+
+# memory layer
+memory:
+  persist_directory: .memory/memory.db
+  summarize_threshold: 3
+  keep_last_messages: 2
