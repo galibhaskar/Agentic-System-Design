@@ -1,14 +1,12 @@
-from my_claude.agent.factory import build_agent
 from my_claude.observability.logger import get_logger
 
 logger = get_logger(__name__)
 
-def handle_query(question: str, thread_id: str) -> str:
+async def handle_query(agent, question: str, thread_id: str) -> str:
     """Entry point for all user queries - builds the agent and runs it."""
     logger.info(f"Handling query: {question}")
-    agent = build_agent()
     agent_config = {"configurable": {"thread_id": thread_id}}
-    response = agent.invoke(
+    response = await agent.ainvoke(
         {"messages": [{"role": "user", "content": question}]},
         agent_config)
     return response["messages"][-1].content

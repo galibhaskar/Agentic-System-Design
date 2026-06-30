@@ -11,3 +11,6 @@ wheels/
 .env
 poetry.lock
 .chromadb/
+.memory/
+.temp/
+credentials.json

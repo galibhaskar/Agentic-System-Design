@@ -1,0 +1,29 @@
+{
+    "mcp_servers": {
+        "github": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-github"
+            ],
+            "transport": "stdio",
+            "env": {
+                "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+            }
+        },
+        "filesystem": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-filesystem",
+                "${FILE_SYSTEM_PERSIST_DIRECTORY}"
+            ],
+            "transport": "stdio"
+        },
+        "gmailserver": {
+            "command": "npx",
+            "transport": "stdio",
+            "args": ["-y", "@gongrzhe/server-gmail-autoauth-mcp"]
+        }
+    }
+}
