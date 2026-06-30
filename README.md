@@ -47,3 +47,42 @@
    - Context Engineering for RAG
 
    Refer to [Day-5 Learnings](docs/Day_5_README.md) for more details.
+
+   ## Class-6:
+   - Memory in Agentic Systems
+      - Short Term Memory
+      - Long Term Memory
+   - Short-term Memory Management Techniques
+      - Sliding Window Memory
+      - Rolling Summary
+      - Message Trimming
+      - Semantic Recall
+      - State Extraction
+      - Hierarchical Summary
+   - Long-term Memory Management Techniques
+      - Semantic Memory
+      - Episodic Memory
+      - Procedural Memory
+
+   Refer to [Day-6 Learnings](docs/Day_6_README.md) for more details.
+
+# Week 3: Claude Code - Capstone Project
+   ## Class-7:
+   - Claude Code Capstone Project
+      - Setup
+      - File Structure
+      - RAG Implementation: 
+         - Semantic RAG (ChromaDB)
+         - Hybrid RAG (QdrantDB)
+      
+   Refer to [Day-7 Learnings](docs/Day_7_README.md) for more details.
+
+   ## Class-8:
+   - Claude Code Capstone Project Continued
+      - Memory (short-term)
+      - Tools
+      - MCPs
+   
+   Refer to [Day-8 Learnings](docs/Day_8_README.md) for more details.
+
+   

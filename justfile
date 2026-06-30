@@ -37,5 +37,8 @@ test_scenarios:
 run_plan plan_id:
     PYTHONPATH=. uv run python week2/test_suit.py {{plan_id}}
 
+stm_inmemory:
+    PYTHONPATH=. uv run python week2/stm_inmemory_demo.py
+
 sync:
     uv sync
